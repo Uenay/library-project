@@ -1,17 +1,20 @@
-package ru.itgirl.libraryproject;
+package ru.itgirl.libraryproject.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class BookDto {
+public class AuthorDto {
     private Long id;
     private String name;
-    private String genre;
-    private String author;
+    private String surname;
+
+    private List<BookDto> books;
 }

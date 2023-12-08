@@ -1,10 +1,11 @@
-package ru.itgirl.libraryproject;
+package ru.itgirl.libraryproject.Model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import ru.itgirl.libraryproject.Model.Book;
 
 import java.util.Set;
 
@@ -20,6 +21,6 @@ public class Genre {
 
     @Column(nullable = false)
     private String name;
-    @ManyToMany(mappedBy = "genre")
+    @OneToMany(mappedBy = "genre")
     private Set<Book> books;
 }

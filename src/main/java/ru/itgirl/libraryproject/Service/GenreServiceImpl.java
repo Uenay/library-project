@@ -1,17 +1,21 @@
-package ru.itgirl.libraryproject;
+package ru.itgirl.libraryproject.Service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.itgirl.libraryproject.Dto.BookDto;
+import ru.itgirl.libraryproject.Dto.GenreDto;
+import ru.itgirl.libraryproject.Model.Genre;
+import ru.itgirl.libraryproject.Repository.GenreRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
-
 @Service
-@RequiredArgsConstructor
 public class GenreServiceImpl implements GenreService {
     private final GenreRepository genreRepository;
+    GenreServiceImpl(GenreRepository genreRepository){
+        this.genreRepository = genreRepository;
+    }
 
     @Override
     public GenreDto getGenreById(Long id) {
@@ -25,13 +29,13 @@ public class GenreServiceImpl implements GenreService {
                 .map(book -> BookDto.builder()
                         .name(book.getName())
                         .id(book.getId())
-                        .author(book.getAuthors()
-                                .stream()
-                                .map(author -> {
-                                    String an = author.getName();
-                                    String as = author.getSurname();
-                                    return an + " " + as;
-                                }).collect(Collectors.joining()))
+////                        //.author(book.getAuthors()
+////                                .stream()
+////                                .map(author -> {
+////                                    String an = author.getName();
+////                                    String as = author.getSurname();
+////                                    return an + " " + as;
+//                                }).collect(Collectors.joining()))
                         .build()
                 ).toList();
         return GenreDto.builder()

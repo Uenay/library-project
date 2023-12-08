@@ -1,4 +1,4 @@
-package ru.itgirl.libraryproject;
+package ru.itgirl.libraryproject.Model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,6 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Getter
+
 @Entity
 public class Author {
 
@@ -25,6 +26,6 @@ public class Author {
     @Column(nullable = false)
     private String surname;
 
-    @ManyToMany(mappedBy = "authors")
+    @OneToMany(mappedBy = "author")
     private Set<Book> books;
 }
