@@ -17,9 +17,17 @@ public class AuthorController {
         return authorService.getAuthorById(id);
     }
 
-    @GetMapping("/author")
-    AuthorDto getAuthorByNameSurname(@RequestBody GetAuthorByNameSurnameRequest getAuthorByNameSurnameRequest ) {
-
-        return authorService.getByNameSurnameV1(getAuthorByNameSurnameRequest.getName(), getAuthorByNameSurnameRequest.getSurname());
-    }
+//    @GetMapping("/author")
+//    AuthorDto getAuthorByNameSurname(@RequestBody GetAuthorByNameSurnameRequest getAuthorByNameSurnameRequest ) {
+//
+//        return authorService.getByNameSurnameV1(getAuthorByNameSurnameRequest.getName(), getAuthorByNameSurnameRequest.getSurname());
+//    }
+//@GetMapping("/author")
+//AuthorDto getByNameSurnameV1(@RequestParam("name") String name, @RequestParam("surname") String surname) {
+//    return authorService.getByNameSurnameV1(name, surname);
+//}
+@GetMapping("/author")
+AuthorDto getBookByNameV1(@RequestParam("name") String name, @RequestParam("surname") String surname) {
+    return authorService.getByNameSurnameV1(name, surname);
+}
 }

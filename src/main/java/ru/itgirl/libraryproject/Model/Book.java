@@ -26,11 +26,7 @@ public class Book {
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @ManyToMany
-    @JoinTable(
-            name = "author_book",
-            inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
-            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"))
+    @ManyToMany (mappedBy = "books")
     private Set<Author> authors;
 
 }
