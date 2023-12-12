@@ -1,10 +1,7 @@
 package ru.itgirl.libraryproject.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.itgirl.libraryproject.Model.Book;
 
 import java.util.Set;
@@ -14,6 +11,7 @@ import java.util.Set;
 @Builder
 @Getter
 @Entity
+@Setter
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
