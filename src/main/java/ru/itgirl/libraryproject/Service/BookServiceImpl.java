@@ -33,8 +33,16 @@ public class BookServiceImpl implements BookService {
             authors.add(author);
         }
         book.setAuthors(authors);
-        bookRepository.save(book);
-        return null;
+        Book savedBook = bookRepository.save(book);
+        return convertEntityToDto(savedBook);
+    }
+    private BookDto convertEntityToDto(Book book){
+        BookDto bookDto = new BookDto();
+        bookDto.setId(book.getId());
+        bookDto.setName(book.getName());
+        bookDto.setGenre(book.getGenre().getName());//TODO: данные жанра не заполняются
+        bookDto.setAuthor(book.getAuthors().toString());//TODO: BookDto должен принимать список авторов, а не одного
+        return bookDto;
     }
 
     @Override
@@ -46,11 +54,16 @@ public class BookServiceImpl implements BookService {
     public BookDto updateBook(UpdateBookRequest updateBookRequest) {
 //        Book book = bookRepository.findById(updateBookRequest.getId()).orElseThrow();
 //        book.setName(updateBookRequest.getName());
-//        book.setGenre();
-//        book.setAuthors();
-//        Book savedBook = bookRepository.save(book);
-//        BookDto bookDto = convertEntityToDto(savedBook);
-//        return bookDto;
+//        Genre genre = new Genre();
+//        genre.setId(genre.getId());
+//        book.setGenre(genre);
+//        Set<Author> authors = new HashSet<>();
+//        for (Long authorId : updateBookRequest.getAuthorsId()) {
+//            Author author = new Author();
+//            author.setId(authorId);
+//            authors.add(author);
+//        }
+//        book.setAuthors(authors);
         return null;
     }
 }
